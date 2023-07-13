@@ -10,6 +10,7 @@ import com.primeiroProjetoSpring.myFinanceApp.entities.Category;
 import com.primeiroProjetoSpring.myFinanceApp.entities.Expense;
 import com.primeiroProjetoSpring.myFinanceApp.entities.User;
 import com.primeiroProjetoSpring.myFinanceApp.repositories.ExpenseRepository;
+import com.primeiroProjetoSpring.myFinanceApp.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ExpenseService {
@@ -26,7 +27,7 @@ public class ExpenseService {
 
 	public Expense findById(Long id) {
 		Optional<Expense> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(()-> new ResourceNotFoundException(id));
 	}
 
 	public Expense insert(Long id, Expense expense) {

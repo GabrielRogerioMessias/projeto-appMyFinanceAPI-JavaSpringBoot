@@ -10,6 +10,7 @@ import com.primeiroProjetoSpring.myFinanceApp.entities.Category;
 import com.primeiroProjetoSpring.myFinanceApp.entities.Entrance;
 import com.primeiroProjetoSpring.myFinanceApp.entities.User;
 import com.primeiroProjetoSpring.myFinanceApp.repositories.EntranceRepository;
+import com.primeiroProjetoSpring.myFinanceApp.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class EntranceService {
@@ -27,7 +28,7 @@ public class EntranceService {
 
 	public Entrance findById(Long id) {
 		Optional<Entrance> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(()-> new ResourceNotFoundException(id));
 	}
 
 	public Entrance insert(Long userId, Entrance entrance) {
