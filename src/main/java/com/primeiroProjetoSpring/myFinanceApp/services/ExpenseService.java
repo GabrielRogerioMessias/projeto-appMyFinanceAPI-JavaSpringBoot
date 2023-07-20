@@ -27,7 +27,7 @@ public class ExpenseService {
 
 	public Expense findById(Long id) {
 		Optional<Expense> obj = repository.findById(id);
-		return obj.orElseThrow(()-> new ResourceNotFoundException(id));
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 	public Expense insert(Long id, Expense expense) {

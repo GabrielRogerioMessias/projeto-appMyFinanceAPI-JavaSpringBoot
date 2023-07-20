@@ -1,6 +1,7 @@
 package com.primeiroProjetoSpring.myFinanceApp.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
@@ -20,7 +21,8 @@ public class Expense implements Serializable {
 	private Long id;
 	private String description;
 	private double valueExpense;
-	
+	private LocalDate dateExpense;
+
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
@@ -33,12 +35,11 @@ public class Expense implements Serializable {
 		super();
 	}
 
-	public Expense(Long id, String description, double valueExpense) {
+	public Expense(String description, double valueExpense, LocalDate dateExpense) {
 		super();
-		this.id = id;
 		this.description = description;
 		this.valueExpense = valueExpense;
-
+		this.dateExpense = dateExpense;
 	}
 
 	public Long getId() {
@@ -79,6 +80,14 @@ public class Expense implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public LocalDate getDateExpense() {
+		return dateExpense;
+	}
+
+	public void setDateExpense(LocalDate dateExpense) {
+		this.dateExpense = dateExpense;
 	}
 
 	@Override

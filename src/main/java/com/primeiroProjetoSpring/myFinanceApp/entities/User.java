@@ -1,6 +1,7 @@
 package com.primeiroProjetoSpring.myFinanceApp.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,7 @@ public class User implements Serializable {
 	private Long id;
 	private String name;
 	private double balance;
+	private LocalDate dateBirth;
 
 	@OneToMany(mappedBy = "user")
 	private List<Entrance> entrances = new ArrayList<>();
@@ -32,11 +34,12 @@ public class User implements Serializable {
 		super();
 	}
 
-	public User(Long id, String name, double balance) {
+	public User(Long id, String name, double balance, LocalDate dateBirth) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.balance = balance;
+		this.dateBirth = dateBirth;
 	}
 
 	public void adicionarExpense(Expense expense) {
@@ -88,6 +91,15 @@ public class User implements Serializable {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+
+	public LocalDate getDateBirth() {
+		return dateBirth;
+	}
+
+	public void setDateBirth(LocalDate dateBirth) {
+		this.dateBirth = dateBirth;
+	}
+
 
 	@Override
 	public int hashCode() {
