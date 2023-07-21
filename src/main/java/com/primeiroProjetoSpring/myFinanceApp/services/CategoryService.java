@@ -50,4 +50,8 @@ public class CategoryService {
 		return repository.save(categoryOld);
 	}
 
+	public List<Category> findByParts(String name) {
+		return repository.findByParts(name);
+	}
+
 }
