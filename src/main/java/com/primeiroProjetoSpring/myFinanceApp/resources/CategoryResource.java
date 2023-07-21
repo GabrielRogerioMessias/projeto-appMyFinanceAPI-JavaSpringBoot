@@ -54,6 +54,12 @@ public class CategoryResource {
 	public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody Category categoryUpda) {
 		Category categ = service.updatecategory(id, categoryUpda);
 		return ResponseEntity.ok().body(categ);
+	}
+
+	@GetMapping(value = "/findByPart/{name}")
+	public ResponseEntity<List<Category>> findParts(@PathVariable String name) {
+		List<Category> list = service.findByParts(name);
+		return ResponseEntity.ok().body(list);
 
 	}
 
