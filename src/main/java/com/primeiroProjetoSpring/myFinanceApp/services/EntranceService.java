@@ -58,5 +58,9 @@ public class EntranceService {
 		updateDate(EntranceOld, entrance);
 		return repository.save(EntranceOld);
 	}
+	
+	public List<Entrance> findByParts(String description){
+		return repository.findByParts(description);
+	}
 
 }

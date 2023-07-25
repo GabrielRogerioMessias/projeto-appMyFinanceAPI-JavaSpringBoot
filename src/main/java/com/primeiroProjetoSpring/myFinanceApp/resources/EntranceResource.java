@@ -37,9 +37,9 @@ public class EntranceResource {
 		return ResponseEntity.ok().body(ent);
 	}
 
-	@PostMapping(value="/{userId}/addEntrance")
-	public ResponseEntity<Entrance> insert(@PathVariable Long userId,@RequestBody Entrance entrance) {
-		Entrance newEntrance = service.insert(userId,entrance);
+	@PostMapping(value = "/{userId}/addEntrance")
+	public ResponseEntity<Entrance> insert(@PathVariable Long userId, @RequestBody Entrance entrance) {
+		Entrance newEntrance = service.insert(userId, entrance);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(entrance.getId())
 				.toUri();
 		return ResponseEntity.created(uri).body(newEntrance);
@@ -56,6 +56,12 @@ public class EntranceResource {
 		Entrance entran = service.updateEntrance(id, entranceUpda);
 		return ResponseEntity.ok().body(entran);
 
+	}
+
+	@GetMapping(value = "/findparts/{description}")
+	public ResponseEntity<List<Entrance>> findByParts(@PathVariable String description) {
+		List<Entrance> list = service.findByParts(description);
+		return ResponseEntity.ok().body(list);
 	}
 
 }

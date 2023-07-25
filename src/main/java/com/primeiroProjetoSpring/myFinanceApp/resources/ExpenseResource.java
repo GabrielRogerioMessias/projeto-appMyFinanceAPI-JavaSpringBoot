@@ -57,4 +57,10 @@ public class ExpenseResource {
 				.toUri();
 		return ResponseEntity.created(uri).body(newExpense);
 	}
+
+	@GetMapping(value = "/findparts/{description}")
+	public ResponseEntity<List<Expense>> findByParts(@PathVariable String description) {
+		List<Expense> list = service.findByParts(description);
+		return ResponseEntity.ok().body(list);
+	}
 }

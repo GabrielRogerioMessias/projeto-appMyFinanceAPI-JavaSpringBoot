@@ -58,4 +58,8 @@ public class ExpenseService {
 		return repository.save(expenseOld);
 	}
 
+	public List<Expense> findByParts(String description) {
+		return repository.findByParts(description);
+	}
+
 }
