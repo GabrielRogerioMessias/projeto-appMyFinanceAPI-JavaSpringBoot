@@ -56,7 +56,11 @@ public class CategoryResource {
 		return ResponseEntity.ok().body(categ);
 	}
 
+<<<<<<< HEAD
 	@GetMapping(value = "/findparts/{name}")
+=======
+	@GetMapping(value = "/findByPart/{name}")
+>>>>>>> 6dee269ddbe782636e12df8529d4fdb42ddaa698
 	public ResponseEntity<List<Category>> findParts(@PathVariable String name) {
 		List<Category> list = service.findByParts(name);
 		return ResponseEntity.ok().body(list);
