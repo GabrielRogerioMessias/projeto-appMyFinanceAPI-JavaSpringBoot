@@ -10,6 +10,7 @@ import com.primeiroProjetoSpring.myFinanceApp.entities.Category;
 import com.primeiroProjetoSpring.myFinanceApp.entities.Expense;
 import com.primeiroProjetoSpring.myFinanceApp.entities.User;
 import com.primeiroProjetoSpring.myFinanceApp.repositories.ExpenseRepository;
+import com.primeiroProjetoSpring.myFinanceApp.repositories.UserRepository;
 import com.primeiroProjetoSpring.myFinanceApp.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -17,7 +18,7 @@ public class ExpenseService {
 	@Autowired
 	private ExpenseRepository repository;
 	@Autowired
-	private UserService userService;
+	private UserRepository userRepository;
 	@Autowired
 	private CategoryService categoryService;
 
@@ -31,7 +32,7 @@ public class ExpenseService {
 	}
 
 	public Expense insert(Long id, Expense expense) {
-		User user = userService.findById(id);
+		User user = userRepository.findById(id).get();
 		Long categoryId = expense.getCategory().getId();
 		Category category = categoryService.findById(categoryId);
 		expense.setUser(user);

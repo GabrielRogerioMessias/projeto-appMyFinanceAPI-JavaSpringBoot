@@ -21,6 +21,8 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String password;
+	private String email;
 	private double balance;
 	private LocalDate dateBirth;
 
@@ -34,10 +36,12 @@ public class User implements Serializable {
 		super();
 	}
 
-	public User(Long id, String name, double balance, LocalDate dateBirth) {
+	public User(Long id, String name, String password, String email, double balance, LocalDate dateBirth) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.password = password;
+		this.email = email;
 		this.balance = balance;
 		this.dateBirth = dateBirth;
 	}
@@ -84,6 +88,22 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public double getBalance() {
 		return balance;
 	}
@@ -99,7 +119,6 @@ public class User implements Serializable {
 	public void setDateBirth(LocalDate dateBirth) {
 		this.dateBirth = dateBirth;
 	}
-
 
 	@Override
 	public int hashCode() {

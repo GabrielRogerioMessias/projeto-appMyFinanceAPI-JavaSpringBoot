@@ -10,6 +10,7 @@ import com.primeiroProjetoSpring.myFinanceApp.entities.Category;
 import com.primeiroProjetoSpring.myFinanceApp.entities.Entrance;
 import com.primeiroProjetoSpring.myFinanceApp.entities.User;
 import com.primeiroProjetoSpring.myFinanceApp.repositories.EntranceRepository;
+import com.primeiroProjetoSpring.myFinanceApp.repositories.UserRepository;
 import com.primeiroProjetoSpring.myFinanceApp.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -18,7 +19,7 @@ public class EntranceService {
 	private EntranceRepository repository;
 
 	@Autowired
-	private UserService userService;
+	private UserRepository userRepository;
 	@Autowired
 	private CategoryService categoryService;
 
@@ -33,7 +34,7 @@ public class EntranceService {
 
 	public Entrance insert(Long userId, Entrance entrance) {
 		Long categoryId = entrance.getCategory().getId();
-		User user = userService.findById(userId);
+		User user = userRepository.findById(userId).get();
 		Category category = categoryService.findById(categoryId);
 		user.adicionarEntrance(entrance);
 		entrance.setUser(user);

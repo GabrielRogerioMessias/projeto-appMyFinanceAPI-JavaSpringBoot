@@ -6,4 +6,6 @@ import com.primeiroProjetoSpring.myFinanceApp.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
+	
+
 }
